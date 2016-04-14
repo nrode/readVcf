@@ -1,0 +1,9 @@
+library(VariantAnnotation)
+## Defines the positions of the two rows to extract
+chr1.gr <- GRanges("chr1", IRanges(c(83921054,83921055), width=1))
+params <- ScanVcfParam(which=chr1.gr)
+## Creates a vcf object
+vcf <- readVcf(TabixFile(file.bgz), "hg19", params)
+dim(vcf)
+
+## Returned vcf object has 3 rows instead of 2
